@@ -423,8 +423,8 @@ button { font-family: inherit; }
 .ps-lbl { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
 
 /* Tabs */
-.profile-tabs { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 18px; background: rgba(0,0,0,.25); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 5px; }
-.ptab-btn { flex: 1; min-width: 72px; padding: 9px 12px; border: none; cursor: pointer; background: transparent; color: var(--muted); font-family: inherit; font-size: .8rem; font-weight: 600; border-radius: 8px; transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.profile-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 22px; background: rgba(0,0,0,.25); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 7px; }
+.ptab-btn { flex: 1; min-width: 80px; padding: 13px 14px; border: none; cursor: pointer; background: transparent; color: var(--muted); font-family: inherit; font-size: .85rem; font-weight: 600; border-radius: 9px; transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 7px; }
 .ptab-btn:hover { color: var(--text); background: rgba(255,255,255,.05); }
 .ptab-btn.active { background: var(--card); color: var(--accent); border: 1px solid rgba(78,255,255,.2); box-shadow: 0 2px 8px rgba(0,0,0,.3); }
 .ptab-count { font-size: .66rem; background: rgba(78,255,255,.15); color: var(--accent); padding: 1px 6px; border-radius: 999px; }
@@ -565,7 +565,7 @@ button { font-family: inherit; }
   .profile-cover-banner { height: 110px; }
   .profile-identity { padding: 0 1rem 1.2rem; }
   .profile-display-name { font-size: 1.1rem; }
-  .ptab-btn { font-size: .72rem; padding: 8px 6px; min-width: 55px; }
+  .ptab-btn { font-size: .8rem; padding: 11px 8px; min-width: 65px; }
   .rpg-equip-row { grid-template-columns: 1fr; }
   .poke-grid-wrap { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
 }
