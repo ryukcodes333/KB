@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { readFileSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -26,12 +26,31 @@ const TIER_NAME = {
   "8": "Void",
 };
 
+// Cached per cold-start so we only load once
 let _cards = null;
-function loadCards() {
-  if (!_cards) {
-    const raw = readFileSync(join(__dirname, "../card.json"), "utf8");
-    _cards = JSON.parse(raw);
+
+async function loadCards() {
+  if (_cards) return _cards;
+
+  // If CARDS_API_URL is set, pull from your scraper endpoint instead
+  const scraperUrl = process.env.CARDS_API_URL;
+  if (scraperUrl) {
+    const resp = await fetch(scraperUrl);
+    if (!resp.ok) throw new Error(`Scraper returned HTTP ${resp.status}`);
+    _cards = await resp.json();
+    return _cards;
   }
+
+  // Fallback: read bundled card.json
+  const localPath = join(__dirname, "../card.json");
+  if (!existsSync(localPath)) {
+    throw new Error(
+      "card.json not found and CARDS_API_URL environment variable is not set. " +
+      "Add CARDS_API_URL in your Vercel project settings pointing to your scraper."
+    );
+  }
+  const raw = readFileSync(localPath, "utf8");
+  _cards = JSON.parse(raw);
   return _cards;
 }
 
@@ -42,7 +61,7 @@ export default async function handler(req, res) {
   if (req.method === "OPTIONS") return res.status(200).end();
 
   try {
-    let cards = loadCards();
+    let cards = await loadCards();
 
     const tierFilter = req.query.tier;
     const search     = (req.query.search || "").trim().toLowerCase();
@@ -60,9 +79,9 @@ export default async function handler(req, res) {
 
     const total = cards.length;
     const slice = cards.slice((page - 1) * limit, page * limit).map(c => ({
-      name:   c.title || c.name || "Unknown",
-      rarity: TIER_NAME[c.tier] || `T${c.tier}`,
-      tier:   `T${c.tier}`,
+      name:      c.title || c.name || "Unknown",
+      rarity:    TIER_NAME[c.tier] || `T${c.tier}`,
+      tier:      `T${c.tier}`,
       shoob_url: c.url,
     }));
 
