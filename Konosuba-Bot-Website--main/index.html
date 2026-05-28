@@ -34,10 +34,7 @@
 <nav>
   <div class="nav-inner">
     <a class="nav-logo" href="#" data-page="home">
-      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="30" height="30" rx="8" fill="rgba(78,255,255,0.12)"/>
-        <path d="M15 3 L17 10L24 8L19.5 14L24 20L17 18L15 25L13 18L6 20L10.5 14L6 8L13 10Z" fill="#4effff" opacity="0.95"/>
-      </svg>
+      <img src="icon.jpg" alt="Konosuba">
       <span>Konosuba</span>
     </a>
 
@@ -68,20 +65,27 @@
 <div id="mobile-overlay"></div>
 <div id="mobile-menu">
   <div class="mobile-menu-header">
-    <span style="font-weight:800;font-size:1rem;font-family:'Cinzel',serif;color:var(--accent)">Konosuba Bot</span>
-    <button id="mobile-close" class="mobile-close">✕</button>
+    <div class="mob-logo-wrap">
+      <img src="icon.jpg" alt="Konosuba">
+      <span class="mob-logo-text">Konosuba Bot</span>
+    </div>
+    <button class="mobile-close" id="mobile-close">✕</button>
   </div>
-  <a href="#home"        data-page="home">🏠 Home</a>
-  <a href="#shop"        data-page="shop">🛒 Shop</a>
-  <a href="#cards"       data-page="cards">🃏 Cards</a>
-  <a href="#pokemon"     data-page="pokemon">⚡ Pokémon</a>
-  <a href="#leaderboard" data-page="leaderboard">🏆 Leaderboard</a>
-  <a href="#membership"  data-page="membership">👑 Membership</a>
-  <div style="border-top:1px solid var(--border);margin:8px 0;padding-top:8px;display:flex;flex-direction:column;gap:8px">
-    <a id="mob-login"    class="btn btn-ghost" href="#login"    data-page="login">Login</a>
-    <a id="mob-register" class="btn btn-primary" href="#register" data-page="register">Start your journey</a>
-    <a id="mob-profile"  class="btn btn-ghost" href="#profile"  data-page="profile" style="display:none">Profile</a>
-    <button id="mob-logout" class="btn btn-ghost" style="display:none">Logout</button>
+
+  <a href="#home"        data-page="home"><span class="mob-icon">🏠</span>Home</a>
+  <a href="#shop"        data-page="shop"><span class="mob-icon">🛒</span>Shop</a>
+  <a href="#leaderboard" data-page="leaderboard"><span class="mob-icon">🏆</span>Leaderboard</a>
+  <a href="#cards"       data-page="cards"><span class="mob-icon">🃏</span>Cards</a>
+  <a href="#pokemon"     data-page="pokemon"><span class="mob-icon">⚡</span>Pokémon</a>
+  <a href="#membership"  data-page="membership"><span class="mob-icon">💎</span>Membership</a>
+
+  <div class="mobile-menu-divider"></div>
+
+  <div class="mobile-menu-auth">
+    <a href="#login"    data-page="login"    id="mob-login"    class="btn btn-ghost" style="justify-content:center;width:100%;text-decoration:none">Login</a>
+    <a href="#register" data-page="register" id="mob-register" class="btn btn-primary" style="justify-content:center;width:100%;text-decoration:none">Register</a>
+    <a href="#profile"  data-page="profile"  id="mob-profile"  class="btn btn-ghost" style="justify-content:center;width:100%;text-decoration:none;display:none">My Profile</a>
+    <button id="mob-logout" onclick="logout()" class="btn btn-danger" style="width:100%;display:none">Logout</button>
   </div>
 </div>
 
@@ -411,10 +415,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a class="nav-logo" data-page="home" style="cursor:pointer;margin-bottom:4px">
-            <svg width="28" height="28" viewBox="0 0 30 30" fill="none">
-              <rect width="30" height="30" rx="8" fill="rgba(78,255,255,0.12)"/>
-              <path d="M15 3 L17 10L24 8L19.5 14L24 20L17 18L15 25L13 18L6 20L10.5 14L6 8L13 10Z" fill="#4effff" opacity="0.95"/>
-            </svg>
+      <img src="icon.jpg" alt="Konosuba">
             Konosuba
           </a>
           <p>The ultimate Konosuba-themed WhatsApp gaming bot. Free to play, always online, always in your pocket. God's blessing on your WhatsApp.</p>
