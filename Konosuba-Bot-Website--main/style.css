@@ -569,3 +569,87 @@ button { font-family: inherit; }
   .rpg-equip-row { grid-template-columns: 1fr; }
   .poke-grid-wrap { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
 }
+
+/* ═══ GET STARTED STEPS ════════════════════════════════════════ */
+.steps-grid { display: flex; flex-direction: column; gap: 16px; }
+.step {
+  display: flex; align-items: flex-start; gap: 18px;
+  padding: 20px 22px; background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); transition: all .3s;
+}
+.step:hover { background: var(--card-hover); border-color: rgba(78,255,255,.18); }
+.step-num {
+  flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--accent-glow); border: 1.5px solid var(--accent);
+  color: var(--accent); font-weight: 800; font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.step > div { display: flex; flex-direction: column; gap: 5px; }
+.step strong { font-size: .95rem; font-weight: 700; }
+
+/* ═══ COMMUNITY / JOIN THE ADVENTURE ══════════════════════════ */
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.comm-card {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 32px 28px; background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); transition: all .35s; cursor: default;
+}
+.comm-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,.5); }
+.comm-card.whatsapp   { border-color: rgba(37,211,102,.2); }
+.comm-card.whatsapp:hover { border-color: rgba(37,211,102,.4); background: rgba(37,211,102,.04); }
+.comm-card.premium    { border-color: rgba(255,215,0,.2); }
+.comm-card.premium:hover  { border-color: rgba(255,215,0,.4); background: rgba(255,215,0,.04); }
+.comm-card.dashboard  { border-color: rgba(78,255,255,.2); }
+.comm-card.dashboard:hover{ border-color: rgba(78,255,255,.4); background: rgba(78,255,255,.04); }
+.comm-icon   { font-size: 2.4rem; }
+.comm-platform {
+  font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+  color: var(--muted);
+}
+.comm-name   { font-family: 'Cinzel', serif; font-size: 1.25rem; font-weight: 800; }
+.comm-desc   { color: var(--muted); font-size: .86rem; line-height: 1.65; flex: 1; }
+.comm-card a { margin-top: 6px; align-self: flex-start; }
+
+/* ═══ EXTRA RESPONSIVE FIXES ══════════════════════════════════ */
+/* Ensure nothing causes horizontal scroll on any screen */
+img, video { max-width: 100%; height: auto; }
+.grid-4 { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+
+@media (max-width: 480px) {
+  /* Profile tabs → 2×2 grid so all 4 fit comfortably */
+  .profile-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .ptab-btn {
+    min-width: unset;
+    padding: 12px 8px;
+    font-size: .82rem;
+  }
+  /* Community cards stack */
+  .community-grid { grid-template-columns: 1fr; }
+  /* Narrower grids on tiny screens */
+  .grid-4 { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  /* Prevent wide elements from causing zoom */
+  .section { padding: 1.5rem .85rem; }
+  .main-container { padding: 24px .85rem 40px; }
+  .auth-box { padding: 1.6rem 1rem; }
+  .card { padding: 1rem; }
+  /* Hero text breathing room */
+  .hero-inner { padding: 24px 1rem 0; }
+  .hero-content h1 { font-size: 1.85rem; }
+  /* Steps */
+  .step { padding: 14px 14px; gap: 12px; }
+  /* Pokémon search bar wrapping */
+  .poke-page-header { flex-direction: column; align-items: flex-start !important; }
+  .search-wrap { width: 100% !important; min-width: unset !important; }
+  /* Leaderboard */
+  .lb-row { grid-template-columns: 32px 30px 1fr 58px; gap: 6px; padding: 8px 10px; }
+  /* Membership grid */
+  .grid-2 { grid-template-columns: 1fr !important; }
+}
